@@ -12,7 +12,8 @@ namespace BuildingForms.Controllers
         {
             return View();
         }
-        public IActionResult Create()
+        public IActionResult Create()   //öreneğin create.cshtml yani view dosyasındaki tüm bilgilerin burada karşılanması gerekir.
+                                        //Bu da @model Product ile mümkün. Çünkü Product modelinin içinde Name,Description,Price,IsApproved alanları var.
         {
             return View();
         }
