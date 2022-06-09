@@ -12,7 +12,7 @@ namespace BuildingForms.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(ProductRepository.Products);  /* _products ları göndermiş oluyorum */
         }
 
         [HttpGet]
