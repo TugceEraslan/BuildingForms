@@ -13,6 +13,9 @@ namespace BuildingForms.Controllers
         public IActionResult Index()
         {
             return View(ProductRepository.Products);  /* _products ları göndermiş oluyorum */
+                                                      /* Create formu içerisine girilen bilgiler product nesnesinin içine paketleniyor.
+                                                       Ve Paketlenen bilgiler Index action metoduna gönderiliyor. Arka taraftaki Produts listesi tarafından
+                                                      yapılıyor.*/
         }
 
         [HttpGet]
@@ -25,9 +28,11 @@ namespace BuildingForms.Controllers
         [HttpPost]
         public IActionResult Create(Product product)    // Get metodundaki Create den farklı olması gerekiyor.
                                          // Post içinde tüm nesneleri almak için Product türüne product nesnesi yaratmalıyız
-        { 
+        {
             // Kayıt işlemi
-            return View();
+            // Validation
+            ProductRepository.AddProduct(product);  // product içindeki modelimizi AddProduct ile listemize ekliyoruz.AddProduct metodumuz ProductRepository içerisinde olduğu için ProductRepository.AddProduct(product) şeklinde yazıyoruz.
+            return RedirectToAction("Index");   // Sayfamızı yönlendirmek için
         }
 
         [HttpGet]
