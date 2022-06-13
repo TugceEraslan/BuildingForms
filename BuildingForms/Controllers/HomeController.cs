@@ -35,11 +35,17 @@ namespace BuildingForms.Controllers
             return RedirectToAction("Index");   // Sayfamızı yönlendirmek için
         }
 
+        // Home/Search?q=kelime
+
         [HttpGet]
         public IActionResult Search(string q)
         {
+            if (string.IsNullOrWhiteSpace(q))    // Eğer q null ya da boşluk değerine eşitse search view ini göndereyim           
+                return View();
+
+            return View("Index",ProductRepository.Products.Where(a=>a.Name.Contains(q.ToUpper())));  // Eğer boş değilse Index view ine gitsin. Sadece view i çağrıyorum action ını çağırmıyorum.Model göndereceğim.
             // Gelen q değeri ile arama işlemleri yapılır.
-            return View();
+           
         }
 
     }
