@@ -1,5 +1,6 @@
 ﻿using BuildingForms.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,11 @@ namespace BuildingForms.Controllers
         public IActionResult Create()   //öreneğin create.cshtml yani view dosyasındaki tüm bilgilerin burada karşılanması gerekir.
                                         //Bu da @model Product ile mümkün. Çünkü Product modelinin içinde Name,Description,Price,IsApproved alanları var.
         {
+            ViewBag.Categories = new SelectList(new List<string>() {"Hikaye","Roman","Siir" });    // ViewBag içerisinde Categories adında bir değişken oluşturuyoruz.
+                                                                                                   // SelectList ile elemanlarımızı new List içerisinde tekrar oluşturalım.
+                                                                                                   // ViewBag ile Categories leri Create.cshtml üzerine taşıyorum.
+                                                                                                   // Sayfa üzerine taşıdıktan sonra Create.cshtml üzerinde typeof ile tür dönüşümü yapmama gerek kalmayacak.
+
             return View();
         }
 

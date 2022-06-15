@@ -15,7 +15,7 @@
         </div>
         <div class="form-group">
             <label for="Name">Description</label>
-            <input asp-for="Description" class="form-control" />
+            <textarea asp-for="Description" class="form-control"></textarea>
         </div>
         <div class="form-group">
             <label for="Name">Price</label>
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="Category">Category</label>
-            <select asp-for="Category" asp-items="@new SelectList(Enum.GetNames(typeof(EnumCategories)))" class="form-control">
+            <select asp-for="Category" asp-items="@ViewBag.Categories" class="form-control">
                 <option selected disabled>Select Category</option>
             </select>  @*Tag helper özelliklerinden asp-items ve SelectList ten faydalandım.Enum içerisindeki olaylar SelectList içerisinde oluşuyor *@
         </div>
@@ -34,7 +34,8 @@
             </label>
         </div>
 
-        <input type="submit" value="Submit" class="btn btn-primary" />
-
+       <br/>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        
     </form>
 </div>
